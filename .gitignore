@@ -1,0 +1,8 @@
+/env
+/frontend/node_modules
+/vars
+/Pipfile
+/backend/Pipfile
+/frontend/.gitignore
+
+
