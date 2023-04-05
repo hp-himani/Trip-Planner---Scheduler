@@ -4,14 +4,6 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // viewCompleted: false,
-      activeTrip: {
-        name: "",
-        dest: "",
-        leader: "",
-        attendees: [],
-        start_date: ""
-      },
       tripList: [],
       };
   }
@@ -20,9 +12,10 @@ class App extends Component {
       try {
         const res1 = await fetch('http://localhost:8000/api/trips/');
         const tripList = await res1.json();
-        const res2 = await fetch('http://localhost:8000/api/users/');
-        const userList = await res2.json();
-        console.log(userList);
+
+        // const res2 = await fetch('http://localhost:8000/api/users/');
+        // const userList = await res2.json();
+        // console.log(tripList);
         this.setState({
           tripList
         });
@@ -37,7 +30,8 @@ class App extends Component {
       //   item => item.completed === viewCompleted
       // );
       const newItems = this.state.tripList;
-      const users = this.state.userList;
+      console.log(newItems);
+      // const users = this.state.userList;
       
       return newItems.map(item => (
         
@@ -45,11 +39,12 @@ class App extends Component {
           <p>
             id: {item.id} dest: {item.dest}<br />
             name: {item.name}<br />
-            leader_id: {item.leader.id} leader_name: {item.leader.name}<br />
+            leader_id: {item.leader.id} leader_name: {item.leader.first_name}<br />
             start date: {item.start_date}<br />
+            end date: {item.end_date}<br />
             {/* {item.attendees}<br /> */}
-            attendees name:
-            {item.attendees.map(user => <div>{user.name}</div>)}
+            attendees id/name:
+            {item.attendees.map(user => <div>{user.id} {user.first_name} {user.email}</div>)}
           </p>
         </li>
       ));
