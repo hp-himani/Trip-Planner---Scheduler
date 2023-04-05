@@ -14,8 +14,8 @@ class TripSerializer(serializers.ModelSerializer):
         fields = "__all__" 
 
 class PlannerSerializer(serializers.ModelSerializer):
-    trip = TripSerializer()
-    added_by = UserSerializer()
+    # trip = TripSerializer()
+    # added_by = UserSerializer()
     class Meta:
         model = Planner
         fields = "__all__" 

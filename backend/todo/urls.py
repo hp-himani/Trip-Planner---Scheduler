@@ -14,5 +14,6 @@ urlpatterns = [
     path('<int:me>/trips/<int:trip_id>/start',StartDate.as_view(),name='start'),
     path('<int:me>/trips/<int:trip_id>/end',EndDate.as_view(),name='end'),
     path('<int:me>/trips/<int:trip_id>/schedule/<str:date>/events',Event.as_view(),name='event'),
+    path('<int:me>/trips/<int:trip_id>/schedule',AllEvent.as_view(),name='allevent'),
     
 ]

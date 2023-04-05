@@ -69,3 +69,10 @@ class Event(APIView):
         serialized_class = PlannerSerializer(query, many = True).data
         return Response(serialized_class)
     
+# get events of trip    
+class AllEvent(APIView):
+    def get(self, request, me,trip_id):
+        query = Planner.objects.filter(trip=trip_id)
+        serialized_class = PlannerSerializer(query, many = True).data
+        return Response(serialized_class)
+    
