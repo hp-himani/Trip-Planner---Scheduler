@@ -1,70 +1,87 @@
-import React, { Component } from "react"
+import './App.css';
+//import { useState } from 'react';
+import {Dates} from './dates.js';
+import Container from 'react-bootstrap/Container';
+import Navbar from 'react-bootstrap/Navbar';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      tripList: [],
-      };
-  }
+function App() {
+  // let dayplans = [
+  //   {
+  //     date:'13 Mar 2023',
+  //     plans: [
+  //     {
+  //       id: 1,
+  //       time: '9:00 AM',
+  //       desc: 'eat breakfast',
+  //       loc: 'Hotel Raj'
+  //     },
+  //     {
+  //       id: 2,
+  //       time: '10:00 AM',
+  //       desc: 'go to palace',
+  //       loc: 'Raj mahal'
+  //     },
+  //     { 
+  //       id: 3,
+  //       time: '11:00 AM',
+  //       desc: 'go to bridge',
+  //       loc: 'Ram Jhula'
+  //     }
+  //     ]
+  //   },
+  //   {
+  //     date:'14 Mar 2023',
+  //     plans: [
+  //     {
+  //       id: 1,
+  //       time: '9:00 AM',
+  //       desc: 'eat pasta',
+  //       loc: 'Hotel Raj'
+  //     },
+  //     {
+  //       id: 2,
+  //       time: '10:00 AM',
+  //       desc: 'go to market',
+  //       loc: 'Raj mahal'
+  //     },
+  //     {
+  //       id: 3,
+  //       time: '1:00 PM',
+  //       desc: 'go to hotel',
+  //       loc: 'Taj mahal'
+  //     }
+  //     ]
+  //   },
+  //   {
+  //     date:'15 Mar 2023',
+  //     plans: []
+  //   },
+  //   {
+  //     date:'16 Mar 2023',
+  //     plans: []
+  //   },
+  //   {
+  //     date:'17 Mar 2023',
+  //     plans: []
+  //   }
+  // ];
 
-    async componentDidMount() {
-      try {
-        const res1 = await fetch('http://localhost:8000/api/trips/');
-        const tripList = await res1.json();
+  return (
+    <>
+    <div className="text-center">
+    <Navbar 
+    style = {{backgroundColor:"#F6AD52", color:"#000000"}}>
+      <Container className="text-center">
+        <Navbar.Brand href="#home">
+          <h4 className="text-center">SCHEDULER</h4>
+        </Navbar.Brand>
+      </Container>
+    </Navbar>
+    </div>
 
-        // const res2 = await fetch('http://localhost:8000/api/users/');
-        // const userList = await res2.json();
-        // console.log(tripList);
-        this.setState({
-          tripList
-        });
-      } catch (e) {
-        console.log(e);
-    }
-    }
-    
-    renderItems = () => {
-      // const { viewCompleted } = this.state;
-      // const newItems = this.state.userList.filter(
-      //   item => item.completed === viewCompleted
-      // );
-      const newItems = this.state.tripList;
-      console.log(newItems);
-      // const users = this.state.userList;
-      
-      return newItems.map(item => (
-        
-        <li>
-          <p>
-            id: {item.id} dest: {item.dest}<br />
-            name: {item.name}<br />
-            leader_id: {item.leader.id} leader_name: {item.leader.first_name}<br />
-            start date: {item.start_date}<br />
-            end date: {item.end_date}<br />
-            {/* {item.attendees}<br /> */}
-            attendees id/name:
-            {item.attendees.map(user => <div>{user.id} {user.first_name} {user.email}</div>)}
-          </p>
-        </li>
-      ));
-    };
+    <Dates/>
+    </>
+  );
+}
 
-    render() {
-      return (
-        <main className="content">
-        <div className="row">
-          <div className="col-md-6 col-sm-10 mx-auto p-0">
-            <div className="card p-3">
-              <ul className="list-group list-group-flush">
-                {this.renderItems()}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </main>
-      )
-    }
-  }
-  
 export default App;
