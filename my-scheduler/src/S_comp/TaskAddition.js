@@ -4,19 +4,15 @@ import Popover from 'react-bootstrap/Popover';
 import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
 
-function TaskAdd() {
+export const TaskAdd =(pl, {addMyTask}) =>{
   
-  const [date, setDate] = useState();
-  const [time, setTime] = useState();
+  const [time, setTime] = useState("");
   const [loc, setLoc] = useState("");
   const [desc, setDesc] = useState("");
 
-  const addMyTask = (e)=>{
+  const SUBMIT = (e)=>{
     e.preventDefault();
-    if(!date || !time || !loc || !desc)
-    {
-      alert("fgregrwe");
-    }
+    pl.addMyTask(pl.length, time,loc,desc);
   }
   return (
     
@@ -28,25 +24,21 @@ function TaskAdd() {
         <Popover id={`popover-positioned-top`} style={{backgroundColor:"#FFC594",width:"600px", maxWidth:"35%"}}>
             <Popover.Header as="h3" style={{backgroundColor:"#FA5B3C"}}>So, what you are planning?</Popover.Header>
             <Popover.Body>
-            <Form onSubmit={addMyTask}>
-              <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label value={date} onChange={(e)=>setDate(e.target.value)}>Date</Form.Label>
-                <Form.Control type="date" />
-              </Form.Group>
+            <Form onSubmit={SUBMIT}>
 
               <Form.Group className="mb-3" >
-                <Form.Label value={time} onChange={(e)=>setTime(e.target.value)}>Time</Form.Label>
-                <Form.Control type="time" />
+                <Form.Label value={time} >Time</Form.Label>
+                <Form.Control type="time" onChange={(e)=>{setTime(e.target.value)}} />
               </Form.Group>
               
               <Form.Group className="mb-3" >
-                <Form.Label value={loc} onChange={(e)=>setLoc(e.target.value)}>Location</Form.Label>
-                <Form.Control as="textarea" rows={2} placeholder="Eg. Hotel Roar" />
+                <Form.Label value={loc} >Location</Form.Label>
+                <Form.Control as="textarea" rows={2} placeholder="Eg. Hotel Roar" onChange={(e)=>setLoc(e.target.value)}/>
               </Form.Group>
 
               <Form.Group className="mb-3" >
-                <Form.Label value={desc} onChange={(e)=>setDesc(e.target.value)}>Description</Form.Label>
-                <Form.Control as="textarea" rows={3}  placeholder="Eg. Go To Mahal" />
+                <Form.Label value={desc} >Description</Form.Label>
+                <Form.Control as="textarea" rows={3}  placeholder="Eg. Go To Mahal" onChange={(e)=>setDesc(e.target.value)} />
               </Form.Group>
               <div className="text-center">
               <Button variant="primary" type="submit"  style=
@@ -66,4 +58,4 @@ function TaskAdd() {
   );
 }
 
-export default TaskAdd;
+//export default TaskAdd;
