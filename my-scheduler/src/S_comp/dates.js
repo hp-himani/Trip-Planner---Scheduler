@@ -47,6 +47,12 @@ export const Dates = (props) => {
     setSch([...Plan,mp]);
   }
 
+  function DeleteTask(Task){
+    setSch(Plan.filter((e)=>{
+      return e!==Task;
+    }));
+  }
+
   return (
     <div className="text-center">
       <Container fluid 
@@ -56,7 +62,7 @@ export const Dates = (props) => {
         <ButtonGroup size="lg" >
           <Button variant="warning" style=
           {{backgroundColor:"#FF900B", color:"#000000", borderColor: "", height: "60px"}}
-          onClick={() => { addPlans(props.dayplans[1].plans) }}
+          onClick={() => { addPlans(props.dayplans[0].plans) }}
           aria-controls="schedule"
           aria-expanded={open}
           >{props.dayplans[0].date}</Button>
@@ -92,7 +98,7 @@ export const Dates = (props) => {
 
       <Collapse in={open}>
         <div id="schedule">
-          <DayPlans Plan={Plan} />
+          <DayPlans Plan={Plan} DeleteTask={DeleteTask} />
           <TaskAdd pl ={Plan} addMyTask={addMyTask}/>
         </div>
       </Collapse>
