@@ -10,5 +10,5 @@ class TripAdmin(admin.ModelAdmin):
 admin.site.register(Trip, TripAdmin)
 
 class PlannerAdmin(admin.ModelAdmin):
-    list_display = ('id', 'event', 'date', 'time', 'location', 'trip', 'added_by')
+    list_display = ('id', 'desc', 'date', 'time', 'loc', 'trip', 'added_by')
 admin.site.register(Planner, PlannerAdmin)

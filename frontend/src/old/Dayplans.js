@@ -14,8 +14,8 @@ export const DayPlans=(props) => {
                 <Card style = {{backgroundColor:"#FFE193", width: "50%", marginLeft:"25%"}}>
                 <Card.Body>        
                 <blockquote className="blockquote mb-0">
-                    <p>{ev.time} | {ev.event}</p>
-                    <footer className="blockquote-footer">{ev.location}</footer>
+                    <p>{ev.time} | {ev.desc}</p>
+                    <footer className="blockquote-footer">{ev.loc}</footer>
                 </blockquote>
                 </Card.Body>
                 </Card>

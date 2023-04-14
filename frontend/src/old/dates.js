@@ -28,8 +28,8 @@ export const Dates = (props) => {
   //   }
   // ]
   const [open, setOpen] = useState(false);
-  const [Plan, setSch] = useState([]);
-  const [schedule, setSchedule] = useState([{date:"hi"}]);
+  // const [Plan, setSch] = useState([]);
+  const [schedule, setSchedule] = useState([]);
 
   const handleClick = async (e) => {
     console.log("hi")
@@ -43,7 +43,6 @@ export const Dates = (props) => {
     setSch([e[0], e[1], e[2]]);
     setOpen(true);
   }
-
   return (
     <div className="text-center">
       <Container fluid 
@@ -56,7 +55,7 @@ export const Dates = (props) => {
             onClick={handleClick}
             aria-controls="schedule"
             aria-expanded={open}
-          >{schedule[0].date}</Button>
+          >235434</Button>
           {/* <Button
             variant="warning" 
             style= {{backgroundColor:"#FF900B", color:"#000000", borderColor: "", height: "60px"}}

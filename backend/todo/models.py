@@ -30,10 +30,10 @@ class Trip(models.Model):
 
 class Planner(models.Model):
     # id = models.IntegerField(primary_key=True)
-    event = models.TextField()
+    desc = models.TextField()
     date = models.DateField()
     time = models.TimeField()
-    location = models.CharField(max_length=250)
+    loc = models.CharField(max_length=250)
     trip = models.ForeignKey(Trip, on_delete=models.CASCADE, related_name="schedule_trip")
     added_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name="schedule_user")
 

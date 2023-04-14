@@ -7,8 +7,8 @@ class UserSerializer(serializers.ModelSerializer):
         fields = "__all__" 
 
 class TripSerializer(serializers.ModelSerializer):
-    leader = UserSerializer()
-    attendees = UserSerializer(many=True)
+    # leader = UserSerializer()
+    # attendees = UserSerializer(many=True)
     class Meta:
         model = Trip
         fields = "__all__" 
@@ -20,3 +20,4 @@ class PlannerSerializer(serializers.ModelSerializer):
         model = Planner
         fields = "__all__" 
         
+
