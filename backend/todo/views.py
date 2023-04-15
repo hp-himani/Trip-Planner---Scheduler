@@ -114,3 +114,11 @@ class NewTask(APIView):
     #         2
     #     ]
     # }
+    # {
+    #     "desc": "lkdnvf",
+    #     "date": "2023-04-03",
+    #     "time": "12:44",
+    #     "loc": "lkfdn",
+    #     "trip": 1,
+    #     "added_by": 1
+    # }

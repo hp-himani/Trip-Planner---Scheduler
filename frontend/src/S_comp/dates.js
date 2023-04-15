@@ -11,6 +11,7 @@ export const Dates = (props) => {
   
   const [open, setOpen] = useState(false);
   const [schedule, setSchedule] = useState([]);
+  const [day, setDay] = useState("");
 
   const handleClick = async (e) => {
     // console.log("hi")
@@ -18,9 +19,9 @@ export const Dates = (props) => {
     const schedule = await res.json();
     setSchedule(schedule);
     console.log(schedule)
-  }
-
-  
+    setDay(e);
+    
+  }  
 
   const renderItems=() => {
     return props.dayplans.map((date)=>
@@ -32,6 +33,7 @@ export const Dates = (props) => {
             aria-controls="schedule"
             aria-expanded={open}
           >{date}</Button>
+          
         
       )
     );
@@ -54,7 +56,7 @@ export const Dates = (props) => {
           <DayPlans Plan={schedule} />
         </div>
       </Collapse>
-      <TaskAdd/>
+      <TaskAdd day={day}/>
 
     </div>
   );
