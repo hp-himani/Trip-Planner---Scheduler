@@ -1,5 +1,3 @@
-// usersData.js
-
 export const usersData = [
     { id: 1, name: 'Himani Panwar1' },
     { id: 2, name: 'Naqiyah Kagzi1' },

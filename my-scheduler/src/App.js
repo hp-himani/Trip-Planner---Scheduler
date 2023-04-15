@@ -1,9 +1,9 @@
 import React from 'react';
-import { NewTrip } from './Create_trip/newTrip';
+import { DashB } from './Dashboard/dshb.js';
 
 function App() {
   return (
-    <NewTrip/>
+    <DashB username="Himani Panwar"/>
   );
 }
 
