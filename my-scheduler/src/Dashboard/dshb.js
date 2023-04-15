@@ -1,5 +1,4 @@
-import React from 'react';
-import { groupsData } from './groupsData';
+
 import background from './Dash_trip.jpg';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
@@ -7,7 +6,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
-export const DashB = ({ username }) => {
+export const DashB = ({ username, groupsData }) => {
 
   return (
     <div >
@@ -32,8 +31,7 @@ export const DashB = ({ username }) => {
               display: 'flex',
               justifyContent: 'center',
               flexDirection: 'column',
-            }}
-          >
+            }}>
             <h1
               style={{
                 color: '#fff',
@@ -41,8 +39,7 @@ export const DashB = ({ username }) => {
                 fontSize: '55px',
                 fontWeight: 'bold',
                 marginBottom: '30%',
-              }}
-            >
+              }}>
               Welcome to Trip Royale,<br /> {username}
             </h1>
           </Col>

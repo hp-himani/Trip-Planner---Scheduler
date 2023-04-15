@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Collapse from 'react-bootstrap/Collapse';
 
-function SideBar() {
+function SideBar({groupName}) {
   const [show, setShow] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -14,12 +14,12 @@ function SideBar() {
   return (
     <>
       <Button variant="warning" onClick={handleShow}>
-        -
+        |||
       </Button>
 
       <Offcanvas show={show} onHide={handleClose} backdrop="static">
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>PKP+2</Offcanvas.Title>
+          <Offcanvas.Title>{groupName}</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
         <ListGroup>

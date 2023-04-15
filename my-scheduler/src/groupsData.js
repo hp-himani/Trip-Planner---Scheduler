@@ -9,6 +9,18 @@ export const groupsData = [
         { id: 1, name: "Himani Panwar" },
         { id: 2, name: "User 2" },
         { id: 3, name: "User 3" }
+      ],
+      chatMsg: [
+        {
+          id:1,
+          sender: "Himani",
+          text: "Where are you all?"
+        },
+        {
+          id:2,
+          sender: "Aryan",
+          text: "mai cp krra hu kl aaunga"
+        }
       ]
     },
     {

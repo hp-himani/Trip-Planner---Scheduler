@@ -1,4 +1,4 @@
-import SideBar from './Sidebar';
+import SideBar from '../Sidebar';
 import {Dates} from './dates.js';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
