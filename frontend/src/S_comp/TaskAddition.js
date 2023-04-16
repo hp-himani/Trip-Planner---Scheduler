@@ -5,11 +5,11 @@ import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
 
 // export const TaskAdd = (pl, { addMyTask }) => {
-export const TaskAdd = (props, pl) => {
+export const TaskAdd = (props) => {
   const [time, setTime] = useState("");
   const [loc, setLoc] = useState("");
   const [desc, setDesc] = useState("");
-
+  const [open, setOpen] = useState(false);
   // const handleSubmit = (e) => {
   //   e.preventDefault();
   //   if (!time || !loc || !desc) {
@@ -18,37 +18,44 @@ export const TaskAdd = (props, pl) => {
   //   else pl.addMyTask(pl.length, time, loc, desc);
   // }
   const handleSubmit = (e) => {
-    console.log(props.day,desc,time,loc);
+    console.log(props.day, desc, time, loc);
     e.preventDefault();
-    fetch(`http://127.0.0.1:8000/1/trips/1/newSchedule`, {
-       method: 'POST',
-       body: JSON.stringify({
+    if (!time || !loc || !desc) {
+      alert("PLease fill all the details for your plan");
+    }
+    else {
+      fetch(`http://127.0.0.1:8000/1/trips/1/newSchedule`, {
+        method: 'POST',
+        body: JSON.stringify({
           desc: desc,
           date: props.day,
           time: time,
           loc: loc,
           trip: 1,
           added_by: 1
-       }),
-       headers: {
+        }),
+        headers: {
           'Content-type': 'application/json; charset=UTF-8',
-       },
-    })
-    .then((res) => {console.log(res);return res.json();})
-            .catch((err) => {
-               console.log(err.message);
-            });
-    
-      };
+        },
+      })
+        .then((res) => { console.log(res); return res.json(); })
+        .then((data) => props.addMyTask(data.id, data.time, data.loc, data.desc))
+        .catch((err) => {
+          console.log(err.message);
+        });       
+    }
+
+  };
   return (
 
     <OverlayTrigger
-      trigger="click"
+      // trigger="click"
+      show={open}
       placement="right"
-      style={{ backgroundColor: "#FFE193", width: "600px" }}
+      style={{ backgroundColor: "#FFE193  ", width: "600px" }}
       overlay={
-        <Popover id={`popover-positioned-top`} style={{ backgroundColor: "#FFC594", width: "600px", maxWidth: "35%" }}>
-          <Popover.Header as="h3" style={{ backgroundColor: "#FA5B3C" }}>So, what you are planning?</Popover.Header>
+        <Popover id={`popover-positioned-top`} style={{ backgroundColor: "#FFFFFF", width: "600px", maxWidth: "35%" ,borderWidth:'1px',borderColor:'grey',boxShadow:'2px 2px 2px grey'}}>
+          <Popover.Header as="h3" style={{ backgroundColor: "#E28616" ,color:'white',borderWidth:'1px',borderColor:'grey'}}>ADD DETAILS</Popover.Header>
           <Popover.Body>
             <Form onSubmit={handleSubmit}>
 
@@ -68,7 +75,7 @@ export const TaskAdd = (props, pl) => {
               </Form.Group>
               <div className="text-center">
                 <Button variant="primary" type="submit" style=
-                  {{ backgroundColor: "#FA5B3C", color: "#000000", borderColor: "#000000", width: "240px" }}>
+                  {{ backgroundColor: "#E28616", color: "#000000", borderColor: "grey", width: "240px" }} onClick={() => setOpen(false)}>
                   Done
                 </Button>
               </div>
@@ -78,8 +85,8 @@ export const TaskAdd = (props, pl) => {
       }
     >
       <Button variant="warning" style=
-        {{ backgroundColor: "#FF900B", color: "#000000", borderColor: "#000000", width: "400px", height: "50px", margin: "2%", boxShadow: "5px 5px 3px rgba(46, 46, 46, 0.62)" }}
-        size="lg">ADD TASK</Button>
+        {{ backgroundColor: "#FF900B", color: "#000000", borderColor: "grey", width: "400px", height: "50px", margin: "2%", boxShadow: "5px 5px 3px rgba(46, 46, 46, 0.62)" }}
+        size="lg" onClick={(e) => setOpen(!open)}>ADD TASK</Button>
     </OverlayTrigger>
   );
 }

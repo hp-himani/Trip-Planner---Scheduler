@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import CloseButton from 'react-bootstrap/CloseButton';
 import TaskAdd from './TaskAddition.js';
 
-export const DayPlans = (props, {DeleteTask}) => {
+export const DayPlans = (props) => {
   return (
     <Container className="pt-3">
         {props.Plan.map((ev) => {
