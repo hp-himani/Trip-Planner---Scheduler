@@ -61,4 +61,3 @@ export const TaskAdd = (pl, { addMyTask }) => {
   );
 }
 
-//export default TaskAdd;

@@ -32,7 +32,9 @@ export const Dates = (props) => {
   const [Plan, setSch] = useState([]);
 
   function addPlans(e) {
-    setSch([e[0], e[1], e[2]]);
+    if(!e)
+    { setSch([e[0], e[1], e[2]]);}
+    else setSch(emptyPlan);
     setOpen(true);
   }
 
@@ -55,44 +57,32 @@ export const Dates = (props) => {
 
   return (
     <div className="text-center">
-      <Container fluid 
+      <Container fluid
       style = {{backgroundColor:"#FFE193", marginTop:"3%", marginBottom:"3%"}} 
       >
         
         <ButtonGroup size="lg" >
-          <Button variant="warning" style=
-          {{backgroundColor:"#FF900B", color:"#000000", borderColor: "", height: "60px"}}
-          onClick={() => { addPlans(props.dayplans[0].plans) }}
-          aria-controls="schedule"
-          aria-expanded={open}
-          >{props.dayplans[0].date}</Button>
+          <div style={{ display: 'flex', overflowX: 'auto', maxWidth: '600px' }}>
+        {props.dayplans.map((e) => (
           <Button
-            variant="warning" 
-            style= {{backgroundColor:"#FF900B", color:"#000000", borderColor: "", height: "60px"}}
-            onClick={() => { addPlans(props.dayplans[1].plans) }}
+            key={e.date} 
+            variant="warning"
+            style={{
+              backgroundColor: '#FF900B',
+              color: '#000000',
+              height: '60px',
+              minWidth: '100px'
+            }}
+            onClick={() => {
+              addPlans(e.plans);
+            }}
             aria-controls="schedule"
             aria-expanded={open}
-          >{props.dayplans[1].date}</Button>
-
-          <Button variant="warning"
-            style= {{backgroundColor:"#FF900B", color:"#000000", borderColor: "", height: "60px"}}
-            onClick={() => { addPlans(emptyPlan) }}
-            aria-controls="schedule"
-            aria-expanded={open}
-          >{props.dayplans[2].date}</Button>
-
-          <Button variant="warning"
-            style= {{backgroundColor:"#FF900B", color:"#000000", borderColor: "", height: "60px"}}
-            onClick={() => { addPlans(emptyPlan) }}
-            aria-controls="schedule"
-            aria-expanded={open}>{props.dayplans[3].date}</Button>
-
-          <Button variant="warning"
-            style= {{backgroundColor:"#FF900B", color:"#000000", borderColor: "", height: "60px"}}
-            onClick={() => { addPlans(emptyPlan) }}
-            aria-controls="schedule"
-            aria-expanded={open}>{props.dayplans[4].date}</Button>
-
+          >
+            {e.date}
+          </Button>
+        ))}
+      </div>
         </ButtonGroup>
       </Container>
 

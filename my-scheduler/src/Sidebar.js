@@ -13,8 +13,14 @@ function SideBar({groupName}) {
   const handleME = () => setOpen(!open);
   return (
     <>
-      <Button variant="warning" onClick={handleShow}>
-        |||
+      <Button variant="warning" onClick={handleShow} 
+      style={{
+        width:'45px',
+        height: '45px'
+      }}>
+      <div className="row" style={{width: '25px', height: '1.2px', backgroundColor: '#000000', marginBottom:'10px'}}></div>
+      <div className="row" style={{width: '25px', height: '1.2px', backgroundColor: '#000000', marginBottom:'10px'}}></div>
+      <div className="row" style={{width: '25px', height: '1.2px', backgroundColor: '#000000'}}></div>
       </Button>
 
       <Offcanvas show={show} onHide={handleClose} backdrop="static">

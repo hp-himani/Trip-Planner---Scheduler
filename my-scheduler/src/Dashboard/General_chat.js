@@ -3,18 +3,18 @@ import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
 import Navbar from 'react-bootstrap/Navbar';
 import ListGroup from 'react-bootstrap/ListGroup';
+import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
 import SideBar from '../Sidebar';
+import background from '../S_comp/Scheduler.jpg';
+
 
 export const ChatPage = ({ groupData }) => {
     let username = "Himani";
     const [messages, setMessages] = useState(groupData.chatMsg); // State to store chat messages
     let k = messages.length - 1;
     const [input, setInput] = useState(''); // State to store input message
-
-    const handleInputChange = (event) => {
-        setInput(event.target.value); // Update input state with user's input
-    };
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
@@ -32,75 +32,109 @@ export const ChatPage = ({ groupData }) => {
     return (
         <div>
             <Navbar variant="dark"
-                style={{ backgroundColor: "#E28616", color: "#000000", height: "50px" }}>
+                style={{ 
+                    backgroundColor: "#E28616", 
+                    color: "#000000", 
+                    height: "50px",
+                    position:'fixed',
+                    width: "100%", 
+                    zIndex:'2' }}>
                 <SideBar groupName={groupData.name} />
                 <Container>
                     <Navbar.Brand style={{ fontSize: "30px" }}><strong>TRIP  ROYALE</strong></Navbar.Brand>
                 </Container>
             </Navbar>
             <Navbar
-                style={{ backgroundColor: "#F6AD52", color: "#000000", textAlign: "center", display: "inline-block", width: "100%" }}>
+                style={{ 
+                    backgroundColor: "#F6AD52", 
+                    color: "#000000", textAlign: "center", 
+                    display: "inline-block", 
+                    width: "100%", 
+                    marginTop: '3.2%',
+                    zIndex:'2',
+                    position:'fixed'}}>
                 <h4>GENERAL</h4>
             </Navbar>
 
-            <div
-                style={{
-                    display: 'flex',
-                    height: '100vh',
-                    backgroundColor: '#FFE193',
-                }}>
-                <div style={{ flexBasis: '20%', }}>
+            <Container fluid>
+            <div className="row" >
+                <Col sm={2} style={{ backgroundColor: '#FFE193', height:'100vh', position:'fixed', marginTop:'6.7%'}}>
                     <ListGroup>
                         {groupData.members.map(member => (
                             <ListGroup.Item
                                 key={member.id}
                                 style={{
                                     backgroundColor: "#FFE193",
-                                    fontSize: '30px',
+                                    fontSize: '20px',
                                 }}
                             >
                                 {member.name}
                             </ListGroup.Item>
                         ))}
                     </ListGroup>
-                </div>
-                <div
+                </Col>
+                <Col sm={10}
                     style={{
-                        flexBasis: '80%',
-                        backgroundColor: '#fff',
+                        marginTop:'6.4%',
                         padding: '20px',
                     }}>
+                    <img src={background} alt="Trip" 
+                    style={{
+                        position:'fixed',
+                        zIndex: '-1',
+                        height: '80%',
+                        width: '80%'
+                    }}/>
                     {messages.map((m) => (
                         <div key={m.id} className="d-flex mb-3">
                             <Card
                                 style={{
-                                    backgroundColor: "#FFE193",
-                                    width: "50%",
-                                    height: "30%",
-                                    borderRadius: "5%"
-                                }}
-                            >
+                                    marginLeft: "24%",
+                                    backgroundColor: "#FF900B",
+                                    borderColor: "#000000",
+                                    width: "40%",
+                                    height: "20%",
+                                    borderRadius: "20px",
+                                    borderTopLeftRadius: "0px"
+                                }}>
                                 <Card.Body>
-                                    <blockquote className="blockquote mb-0">
-                                        {m.sender}
-                                    </blockquote>
-                                    <footer >{m.text}</footer>
+                                <Card.Title>{m.sender}</Card.Title>
+                                    <Card.Text style={{fontSize:"20px", color:"#FFFFFF"}}>
+                                    {m.text}
+                                    </Card.Text>
                                 </Card.Body>
                             </Card>
 
                         </div>
                     ))}
-                    <form onSubmit={handleFormSubmit} >
-                        <input
-                            type="text"
-                            placeholder="Type your message..."
-                            value={input}
-                            onChange={handleInputChange}
-                        />
-                        <button type="submit">Send</button>
-                    </form>
+                    <div 
+                    style={{
+                        bottom: '-10px',
+                        position:'fixed',
+                        width: '95%',
+                        zIndex: '2'
+                    }}>
+                    <Form onSubmit={handleFormSubmit} className="chat-form" 
+                        style={{
+                            marginLeft:"20%",
+                        }}>
+                        <div className="d-flex" style={{ width: '100%' }}>
+                            <Form.Group className="mb-3 mr-2 flex-grow-1">
+                                <Form.Control
+                                    type="text"
+                                    placeholder="Type your message..."
+                                    value={input}
+                                    onChange={(e) => { setInput(e.target.value) }}
+                                    style={{ borderColor: "#000000", borderBottomLeftRadius: "30px", borderTopLeftRadius:"30px"}}
+                                />
+                            </Form.Group>
+                            <Button variant="warning" type="submit" style={{ backgroundColor: "#F6AD52", borderColor: "#000000", height: "38px",borderBottomRightRadius: "30px", borderTopRightRadius:"30px" }}>Send</Button>
+                        </div>
+                    </Form>
+                    </div>
+                </Col>
                 </div>
-            </div>
+            </Container >
         </div>
     );
 };
