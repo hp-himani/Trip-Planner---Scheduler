@@ -1,5 +1,6 @@
 import SideBar from '../Sidebar';
 import {Dates} from './dates.js';
+import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 
@@ -63,90 +64,8 @@ function Scehduler() {
       date:'17 Mar 2023',
       plans: []
     },
-    {
-      date:'15 Mar 2023',
-      plans: []
-    },
-    {
-      date:'16 Mar 2023',
-      plans: []
-    },
-    {
-      date:'17 Mar 2023',
-      plans: []
-    },
-    {
-      date:'15 Mar 2023',
-      plans: []
-    },
-    {
-      date:'16 Mar 2023',
-      plans: []
-    },
-    {
-      date:'17 Mar 2023',
-      plans: []
-    },
-    {
-      date:'15 Mar 2023',
-      plans: []
-    },
-    {
-      date:'16 Mar 2023',
-      plans: []
-    },
-    {
-      date:'17 Mar 2023',
-      plans: []
-    },
-    {
-      date:'15 Mar 2023',
-      plans: []
-    },
-    {
-      date:'16 Mar 2023',
-      plans: []
-    },
-    {
-      date:'17 Mar 2023',
-      plans: []
-    },
-    {
-      date:'15 Mar 2023',
-      plans: []
-    },
-    {
-      date:'16 Mar 2023',
-      plans: []
-    },
-    {
-      date:'17 Mar 2023',
-      plans: []
-    },
-    {
-      date:'15 Mar 2023',
-      plans: []
-    },
-    {
-      date:'16 Mar 2023',
-      plans: []
-    },
-    {
-      date:'17 Mar 2023',
-      plans: []
-    },
-    {
-      date:'15 Mar 2023',
-      plans: []
-    },
-    {
-      date:'16 Mar 2023',
-      plans: []
-    },
-    {
-      date:'17 Mar 2023',
-      plans: []
-    },
+    
+
   ];
 
   return (

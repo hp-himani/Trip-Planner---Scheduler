@@ -20,6 +20,16 @@ export const groupsData = [
           id:2,
           sender: "Aryan",
           text: "mai cp krra hu kl aaunga"
+        },
+        {
+          id:1,
+          sender: "Komal",
+          text: "Where are you all?"
+        },
+        {
+          id:2,
+          sender: "Abhay",
+          text: "mai cp krra hu kl aaunga"
         }
       ]
     },

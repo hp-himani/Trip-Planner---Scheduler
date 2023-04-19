@@ -1,13 +1,17 @@
-
+import React from 'react';
 import background from './Dash_trip.jpg';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Navbar from 'react-bootstrap/Navbar';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import {
+  useNavigate
+} from "react-router-dom";
 
 export const DashB = ({ username, groupsData }) => {
 
+  const nvg = useNavigate();
   return (
     <div >
       <div>
@@ -79,11 +83,12 @@ export const DashB = ({ username, groupsData }) => {
               })}
               <Button
                 variant="warning"
+                onClick={()=>nvg("/New")}
                 style={{
                   background: '#FF900B',
                   color: '#000000',
                   borderColor: '#000000',
-                  borderRadius: '30%',
+                  borderRadius: '20px',
                   fontSize: '50px',
                   fontWeight: 'bold',
                   width: '30%',

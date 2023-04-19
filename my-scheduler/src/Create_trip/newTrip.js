@@ -1,10 +1,13 @@
-import { useState } from 'react';
+import React,{ useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import photo from './Travel_mode.png'
 import { usersData } from './usersData'; 
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
+import {
+  useNavigate
+} from "react-router-dom";
 
 export const NewTrip=()=> {
   const [groupName, setGroupName] = useState('');
@@ -13,6 +16,7 @@ export const NewTrip=()=> {
   const [endDate, setEndDate] = useState('');
   const [selectedMembers, setSelectedMembers] = useState([]);
 
+  const nvg = useNavigate();
 
   const handleMemberSelection = (event) => {
     const selectedOptions = event.target.options;
@@ -25,13 +29,17 @@ export const NewTrip=()=> {
     setSelectedMembers(selectedMemberIds);
   }
 
-  const handleSubmit = (e) => {
+  function handleSubmit (e){
     e.preventDefault();
     if(!groupName || !destination ||!startDate || !endDate)
     {
       alert("Group details can't be empty");
     }
-    else console.log('Form submitted:', groupName, destination, startDate, endDate, selectedMembers);
+    else 
+    {
+      console.log('Form submitted:', groupName, destination, startDate, endDate, selectedMembers);
+      nvg("/Schd");
+    }
   };
 
   return (
@@ -102,6 +110,7 @@ export const NewTrip=()=> {
             <Button
               variant="warning"
               type="submit"
+              onClick={handleSubmit}
               style={{margin:"3%",backgroundColor: '#FF900B', color: '#000000', borderColor: '#000000', width: '95%' }}
             >
               SUBMIT

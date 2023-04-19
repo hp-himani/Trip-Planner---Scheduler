@@ -1,8 +1,12 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
+import React from 'react';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Collapse from 'react-bootstrap/Collapse';
+import {
+  Link
+} from "react-router-dom";
 
 function SideBar({groupName}) {
   const [show, setShow] = useState(false);
@@ -29,7 +33,7 @@ function SideBar({groupName}) {
         </Offcanvas.Header>
         <Offcanvas.Body>
         <ListGroup>
-            <ListGroup.Item variant="warning">SCHEDULER</ListGroup.Item>
+            <ListGroup.Item variant="warning"><Link to="/Schd">SCHEDULER</Link></ListGroup.Item>
             <ListGroup.Item variant="warning">FIND NEARBY PLACES</ListGroup.Item>
             <ListGroup.Item variant="warning">SPLIT BILL</ListGroup.Item>
             <ListGroup.Item variant="warning">
@@ -46,7 +50,7 @@ function SideBar({groupName}) {
                 </Collapse>
             </ListGroup.Item>
             <ListGroup.Item variant="warning">PHOTOS</ListGroup.Item>
-            <ListGroup.Item variant="warning">CHAT</ListGroup.Item>
+            <ListGroup.Item variant="warning"><Link to="/Chat">CHAT</Link></ListGroup.Item>
             <ListGroup.Item variant="warning">SETTINGS</ListGroup.Item>
         </ListGroup>
         </Offcanvas.Body>
